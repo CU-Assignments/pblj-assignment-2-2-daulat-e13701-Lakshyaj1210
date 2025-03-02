@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class AutoboxingSum {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter integers separated by spaces:");
+        String input = scanner.nextLine();
+        
+        // Parse the input string into integers
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            try {
+                Integer num = parseInteger(token);
+                numbers.add(num);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number: " + token);
+            }
+        }
+        
+        scanner.close();
+        
+      
+        int sum = calculateSum(numbers);
+        System.out.println("Sum of numbers: " + sum);
+    }
+    
+    // Method to parse string to Integer (Autoboxing)
+    private static Integer parseInteger(String str) {
+        return Integer.parseInt(str);
+    }
+    
+    // Method to calculate sum (Unboxing)
+    private static int calculateSum(List<Integer> numbers) {
+        int sum = 0;
+        for (Integer num : numbers) {
+            sum += num; 
+        }
+        return sum;
+    }
+}
+
